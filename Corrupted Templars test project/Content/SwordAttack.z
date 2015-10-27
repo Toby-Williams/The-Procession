@@ -1,0 +1,42 @@
+class SwordAttack : ZilchComponent
+{
+    var Time : Real = 0;
+    var Direction : Real3 = Real3(0, 10, 0);
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(Zero.Keyboard, Events.KeyDown, this.OnKeyDown);
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if(this.Time >= 2)
+        this.Time +=event.Dt;
+    }
+    function OnKeyDown(event : KeyboardEvent)
+    {
+        if(event.Key == Keys.A)
+        {
+            this.Direction = Real3 (-15,0,0);
+        }
+        if(event.Key == Keys.D)
+        {
+            this.Direction = Real3 (15,0,0);
+        }
+        if(event.Key == Keys.S)
+        {
+            this.Direction = Real3 (0,-15,0);
+        }
+        if(event.Key == Keys.W)
+        {
+            this.Direction = Real3 (0, 15, 0);
+    }
+    if(event.Key == Keys.Space)
+    {
+        var spawnPosition = this.Owner.Transform.Translation;
+        var archetypeToSpawn = Archetype.Find("GoodMagic");
+        var createdGoodMagic = this.Space.CreateAtPosition (archetypeToSpawn, spawnPosition);
+        createdGoodMagic.RigidBody.Velocity = this.Direction;
+             
+    }
+}
+}

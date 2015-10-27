@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "MageHealth",
+		uint64 ResourceId = 5636891b294e4704,
+	},
+},

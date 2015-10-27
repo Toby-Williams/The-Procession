@@ -1,0 +1,18 @@
+class Health : ZilchComponent
+{
+    [Property] 
+    var HealthP : Real = 50;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        Console.WriteLine(this.HealthP);
+        if(this.HealthP <= 0)
+        {
+            this.Owner.Destroy();
+        }
+    }
+}

@@ -1,0 +1,32 @@
+class Level2Loader : ZilchComponent
+{
+    var Level1: Level = Level.Find("Level");
+    var Level2: Level = Level.Find("Level2");
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(Zero.Keyboard, Events.KeyUp, this.OnKeyUp);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+    function OnKeyUp(event: KeyboardEvent)
+    {
+        if (event.Key == Keys.Up)
+        {
+            this.Space.ReloadLevel();
+        }
+        else if (event.Key == Keys.Right)
+        {
+            var currentLevelName = this.Space.CurrentLevel;
+            if (currentLevelName == this.Level1)
+            {
+                this.Space.LoadLevel(this.Level2);
+            }
+            else if (currentLevelName == this.Level2)
+            {
+                this.Space.LoadLevel(this.Level1);
+        }
+    }
+}
+}

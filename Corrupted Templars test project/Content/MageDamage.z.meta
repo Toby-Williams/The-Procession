@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "MageDamage",
+		uint64 ResourceId = 563688a616f992a2,
+	},
+},

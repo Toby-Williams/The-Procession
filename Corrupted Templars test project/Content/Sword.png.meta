@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "Sword",
+		uint64 ResourceId = 5605093dfe5db334,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 497,
+		uint FrameSizeY = 512,
+		uint FrameCount = 1,
+		float FrameDelay = 0.0833333358,
+		float OriginX = 0,
+		float OriginY = 512,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

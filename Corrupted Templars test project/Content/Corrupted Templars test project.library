@@ -1,0 +1,7 @@
+ContentLibrary = 
+{
+	string Name = "Corrupted Templars test project",
+	uint64 LibraryId = 561d1ec96129cdb7,
+	string SourceControlType = "",
+	bool ReadOnly = false,
+},

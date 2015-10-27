@@ -1,0 +1,24 @@
+class DemonTimer : ZilchComponent
+{
+var Time : Real = 0.0;
+var Spawned : Boolean = false;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        this.Time +=event.Dt;
+        if(this.Time >= 120)
+        {
+            if(this.Spawned == false)
+            {
+                var spawnPosition = this.Owner.Transform.Translation;
+                var archetypeToSpawn = Archetype.Find("Demon");
+                var createdSpawnBox = this.Space.CreateAtPosition (archetypeToSpawn,spawnPosition);
+                Console.WriteLine("hello");
+                this.Time = 0;
+            }
+        }
+    }
+}

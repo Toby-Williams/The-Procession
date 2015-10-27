@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "Arcane",
+		uint64 ResourceId = 560957e9d4b19f0c,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 31,
+		uint FrameSizeY = 27,
+		uint FrameCount = 1,
+		float FrameDelay = 0.0833333358,
+		float OriginX = 15,
+		float OriginY = 13,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

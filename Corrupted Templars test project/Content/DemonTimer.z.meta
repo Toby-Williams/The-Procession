@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "DemonTimer",
+		uint64 ResourceId = 561bd25ef7a774c1,
+	},
+},

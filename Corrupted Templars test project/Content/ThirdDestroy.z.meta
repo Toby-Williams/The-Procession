@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "ThirdDestroy",
+		uint64 ResourceId = 563689463d6c0ccb,
+	},
+},

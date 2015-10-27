@@ -1,0 +1,18 @@
+class PortalHealth : ZilchComponent
+{
+    [Property] 
+    var Health : Real = 200;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        Console.WriteLine(this.Health);
+        if(this.Health <= 0)
+        {
+            this.Owner.Destroy();
+        }
+    }
+}
