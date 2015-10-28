@@ -1,7 +1,7 @@
 class MageHealth : ZilchComponent
 {
     [Property] 
-    var Health : Real = 15;
+    var HealthP : Real = 15;
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
@@ -9,8 +9,8 @@ class MageHealth : ZilchComponent
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        Console.WriteLine(this.Health);
-        if(this.Health <= 0)
+        Console.WriteLine(this.HealthP);
+        if(this.HealthP <= 0)
         {
             this.Owner.Destroy();
         }

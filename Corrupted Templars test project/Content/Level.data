@@ -121,7 +121,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [-3.56571007, 19.2752323, 100],
+			Vec3 Translation = [-0.452932239, 4.3199091, 100],
 			Vec3 Scale = [1, 1, 1],
 			Quat Rotation = [-0, -1.09278471e-008, 0, 1],
 		},
@@ -133,7 +133,7 @@ Level =
 			float FieldOfView = 45,
 			float NearPlane = 0.5,
 			float FarPlane = 500,
-			float Size = 33.2871208,
+			float Size = 49.6585426,
 		},
 		EditorCameraController = 
 		{
@@ -141,7 +141,7 @@ Level =
 			float LookDistance = 50,
 			float VerticalAngle = 0,
 			float HorizontalAngle = 0,
-			Vec3 LookTarget = [-3.56571007, 19.2752323, 50],
+			Vec3 LookTarget = [-0.452932239, 4.3199091, 50],
 			float MoveSensitivity = 1,
 		},
 		EditorRenderer = 
@@ -254,6 +254,9 @@ Level =
 		Level2Loader = 
 		{
 		},
+		LevelSwitchOverTime = 
+		{
+		},
 	},
 	ArchetypeInstance = 
 	{
@@ -309,7 +312,7 @@ Level =
 		},
 		MageHealth = 
 		{
-			float Health = 15,
+			float HealthP = 15,
 		},
 		MageDamage = 
 		{

@@ -1,0 +1,18 @@
+class LevelSwitchOverTime : ZilchComponent
+{
+    var Time : Real = 0.0;
+    var Level1: Level = Level.Find("Level");
+    var Level2: Level = Level.Find("Level2");
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+}
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+   this.Time +=event.Dt;
+        if(this.Time >= 5.0)
+        {
+                this.Space.LoadLevel(this.Level2);
+            }
+        }
+    }

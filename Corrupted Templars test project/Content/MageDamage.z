@@ -9,8 +9,8 @@ class MageDamage : ZilchComponent
         if(event.OtherObject.Name == "EvilMage")
             {
             Console.WriteLine("Hello");
-            var temp = this.Space.FindObjectByName("EvilMage").MageHealth.Health;
+            var temp = this.Space.FindObjectByName("EvilMage").MageHealth.HealthP;
             temp -=1;
-        this.Space.FindObjectByName("EvilMage").MageHealth.Health = temp;}
+        this.Space.FindObjectByName("EvilMage").MageHealth.HealthP = temp;}
 }
 }

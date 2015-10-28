@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "AlliedMagic2",
+		uint64 ResourceId = 5626c2b7d9e91fc5,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 65,
+		uint FrameSizeY = 63,
+		uint FrameCount = 1,
+		float FrameDelay = 0.0833333358,
+		float OriginX = 32,
+		float OriginY = 31,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

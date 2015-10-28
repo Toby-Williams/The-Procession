@@ -1,0 +1,112 @@
+class AllyController : ZilchComponent
+{
+    // Shooting Properties
+    [Property]
+    var ShootDelay: Real = 1.0;
+    var NextShot: Real = 0.0;
+    [Property]
+    var PaceSpeed: Real = 1.0;
+    [Property]
+    var MaxMoveDistance: Real = 10.0;
+    var PaceDirection: Real3 = Real3(0.0, 1.0, 0.0);
+    var StartPosition: Real3 = Real3();
+    
+    [Property]
+    var TargetObject: CogPath = null;
+    [Property]
+    var ChaseSpeed: Real = 5.0;
+    var ChaseTriggerDistance: Real = 25.0;
+    var DistanceFromTarget: Real = 0.0;
+    var ChaseDirection: Real3 = Real3();
+    var ChaseColor:Real4 = Real4(1.0, 0.0, 0.0, 1.0);
+    var TargetIsWithinRange: Boolean = false;
+    
+    var OriginalColor: Real4 = Real4();
+    
+    [Dependency]
+    var Transform: Transform = null;
+    [Dependency]
+    var Sprite: Sprite = null;
+
+    function ChaseTarget(event: UpdateEvent)
+    {
+    
+    this.Owner.Transform.Translation += this.ChaseDirection * event.Dt * this.ChaseSpeed;
+}
+    function CalculateChaseDirectionAndDistance()
+{
+    // Get direction toward target
+    this.ChaseDirection = this.TargetObject.Cog.Transform.Translation - this.Owner.Transform.Translation;
+    // Extract distance by finding magnitude
+    this.DistanceFromTarget = Math.Length(this.ChaseDirection);
+    // Extract direction by normalizing
+    this.ChaseDirection = Math.Normalize(this.ChaseDirection);
+}
+        function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        this.StartPosition = this.Owner.Transform.Translation;
+        this.OriginalColor = this.Owner.Sprite.Color;
+    }
+        
+    function OnLogicUpdate(event: UpdateEvent)
+    {
+        // Reevaluate the situation to determine if our object should pursue
+    this.TargetIsWithinRange = false;
+    // If our target exists
+    if (this.TargetObject.Cog != null)
+{
+    // Calculate the direction and distance of target
+    this.CalculateChaseDirectionAndDistance();
+    // Evaluate whether Ai should chase or pace
+    this.TargetIsWithinRange = (this.DistanceFromTarget <= this.ChaseTriggerDistance);
+
+    if (this.TargetIsWithinRange)
+    {
+        // Chase target
+        this.ChaseTarget(event);
+        //Shoot target
+        this.ShootAtTarget(event);
+    }
+    else // If target not in range
+    {
+        // Pace back and forth
+        this.PaceBackAndForth(event);
+    }
+}
+    else // if there is no target, pace
+{
+    this.PaceBackAndForth(event);
+}
+}
+        function PaceBackAndForth(event : UpdateEvent)
+    {
+        this.Owner.Sprite.Color = this.OriginalColor;
+        var displacement = this.Owner.Transform.Translation - this.StartPosition;
+        var distanceFromStart = Math.Length(displacement);
+        
+        if (distanceFromStart >= this.MaxMoveDistance)
+        {
+            this.PaceDirection = -displacement;
+        }
+        this.PaceDirection = Math.Normalize(this.PaceDirection);
+        this.Owner.Transform.Translation += this.PaceDirection * event.Dt * this.PaceSpeed;
+}
+function ShootAtTarget(event: UpdateEvent)
+{
+if (event.TimePassed > this.NextShot)
+{
+    this.NextShot = event.TimePassed + this.ShootDelay;
+    this.NextShot = event.TimePassed + this.ShootDelay;
+    // Create a projectile originating from the enemy's position
+    var projectileObject = this.Space.CreateAtPosition(Archetype.Find("AlliedMagic"), this.Owner.Transform.Translation);
+    if (projectileObject != null)
+    {
+        // Shoot in the direction of the target (which is the same as the chase Direction)
+        projectileObject.Projectile.Direction = this.ChaseDirection;
+        // Make sure projectile moves faster than the enemy
+        projectileObject.Projectile.Speed = 15.0 + this.ChaseSpeed;
+    }
+}
+}
+}

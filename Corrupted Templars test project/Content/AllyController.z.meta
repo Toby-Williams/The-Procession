@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "AllyController",
+		uint64 ResourceId = 5626c8f41c5c6d7d,
+	},
+},
